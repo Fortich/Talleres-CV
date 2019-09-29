@@ -1,10 +1,8 @@
-import VLCJVideo.*;
+import processing.video.*;
 
-PGraphics py;
-PGraphics pg;
 String image_str;
 String video_str;
-PImage image_1, image_2, image_3, image_4;
+PImage image_1, image_2, image_3, image_4, video_2, video_3, video_4;
 
 float image_1_x, image_1_y;
 float image_2_x, image_2_y;
@@ -12,7 +10,12 @@ float image_3_x, image_3_y;
 float image_4_x, image_4_y;
 float image_width, image_height;
 
-VLCJVideo video_1, video_2, video_3, video_4;
+boolean showing_video;
+boolean gray_scaling_video;
+boolean convolution_masks_video;
+boolean showing_frame_rate;
+
+Movie video_1;
 
 float padding_x = 10;
 float padding_y = 10;
@@ -35,28 +38,26 @@ float[][] sharpen = {
   { 0, -1, 0}
 };
 float[][] gaussianBlur = {
-  { 1.0/16, 1.0/16, 1.0/16}, 
-  { 1.0/16, 1.0/16, 1.0/16}, 
-  { 1.0/16, 1.0/16, 1.0/16},
+  { 1.0/16, 2.0/16, 1.0/16}, 
+  { 2.0/16, 4.0/16, 2.0/16}, 
+  { 1.0/16, 2.0/16, 1.0/16},
 };
 
 void setup(){
   size(1024, 540);
   //fullScreen();
-  background(255);
+  background(200);
   fill(0);
-  image_str = "nazuko.png";
-  video_str = "video.mp4";
+  image_str = "image1.png";
+  video_str = "video1.mov";
   
   image_1 = loadImage(image_str);
   image_2 = loadImage(image_str);
   image_3 = loadImage(image_str);
   image_4 = loadImage(image_str);
   
-  video_1 = new VLCJVideo(this);
-  video_2 = new VLCJVideo(this);
-  video_3 = new VLCJVideo(this);
-  video_4 = new VLCJVideo(this);
+  video_1 = new Movie(this, video_str);
+  video_1.loop();
   
   image_1_x = padding_x*3 + width*relative_distance_x*1.00;
   image_1_y = padding_y;
@@ -71,6 +72,33 @@ void setup(){
   image_height = height*relative_distance_y*4.25;
   
   set_image_4();
+  draw_buttoms();
+  
+  showing_video = false;
+  gray_scaling_video = false;
+  convolution_masks_video = false;
+  showing_frame_rate = false;
+}
+
+void movieEvent(Movie movie) {
+  movie.read();
+  if (gray_scaling_video){
+    gray_scale_tresshold(video_1, image_2, 128);
+    gray_scale_raw_avg(video_1, image_3);
+    gray_scale_raw_luma(video_1, image_4); 
+  }
+  if (convolution_masks_video){
+    image_1 = makeConvolution(video_1,identity);
+    image_2 = makeConvolution(image_1,sharpen);
+    image_3 = makeConvolution(image_1,edgeDetection);
+    image_4 = makeConvolution(image_1,gaussianBlur);
+  }
+  if (showing_frame_rate) {
+    fill(220);
+    rect(width-55,height-17,55,17);
+    fill(0);
+    text(frameRate, width-45, height-5);
+  }
 }
 
 void set_image_4(){
@@ -80,34 +108,22 @@ void set_image_4(){
   image(image_4, image_4_x, image_4_y, image_width, image_height);
 }
 
-void draw_video_reset(){
+void set_video_4(){
   image(video_1, image_1_x, image_1_y, image_width, image_height);
-  image(video_2, image_2_x, image_2_y, image_width, image_height);
-  image(video_3, image_3_x, image_3_y, image_width, image_height);
-  image(video_4, image_4_x, image_4_y, image_width, image_height);
-}
-
-void open_video(){
-  video_1.openMedia(video_str);
-  //video_2.openMedia(video_str);
-  //video_3.openMedia(video_str);
-  //video_4.openMedia(video_str);
-  video_1.loop();
-  //video_2.loop();
-  //video_3.loop();
-  //video_4.loop();
-  video_1.play();
-  //video_2.play();
-  //video_3.play();
-  //video_4.play();
+  image(image_2, image_2_x, image_2_y, image_width, image_height);
+  image(image_3, image_3_x, image_3_y, image_width, image_height);
+  image(image_4, image_4_x, image_4_y, image_width, image_height);
 }
 
 void gray_scale_image(){
-  print("Gray scaling images!");
-  set_image_4();
+  showing_video = false;
+  gray_scaling_video = false;
+  convolution_masks_video = false;
+  showing_frame_rate = false;
   gray_scale_tresshold(image_1, image_2, 128);
   gray_scale_raw_avg(image_1, image_3);
-  gray_scale_raw_luma(image_1, image_4); 
+  gray_scale_raw_luma(image_1, image_4);
+  println("Gray scaling images!");
 }
 
 void gray_scale_tresshold(PImage image_source, PImage image_destination, int tresshold){
@@ -139,18 +155,26 @@ void gray_scale_raw_luma(PImage image_source, PImage image_destination){
 
 
 void gray_scale_video(){
-  print("gray_scale_video()");
+  showing_video = true;
+  gray_scaling_video = true;
+  convolution_masks_video = false;
+  showing_frame_rate = false;
+  println("Gray scaling videos!");
 }
 
 void convolution_mask_image(){
-  print("convolution_mask_image!");
+  showing_video = false;
+  gray_scaling_video = false;
+  convolution_masks_video = false;
+  showing_frame_rate = false;
+  println("convolution_mask_image!");
   
   set_image_4();
   
   image_1 = makeConvolution(image_1,identity);
   image_2 = makeConvolution(image_1,sharpen);
   image_3 = makeConvolution(image_1,edgeDetection);
-  image_4 = makeConvolution(image_1,boxblur);
+  image_4 = makeConvolution(image_1,gaussianBlur);
 
   image_1.updatePixels();
   image_2.updatePixels();
@@ -159,56 +183,75 @@ void convolution_mask_image(){
 }
 
 void convolution_mask_video(){
-  print("convolution_mask_video()");
+  showing_video = true;
+  gray_scaling_video = false;
+  convolution_masks_video = true;
+  showing_frame_rate = false;
+  println("convolution_mask_video()");
 }
 
 void histogram(){
-  print("histogram!");
-  draw_histogram(image_1);
-  draw_histogram(image_2);
-  draw_histogram(image_3);
-  draw_histogram(image_4);
+  showing_video = false;
+  gray_scaling_video = false;
+  convolution_masks_video = false;
+  showing_frame_rate = false;
+  image_1 = loadImage(image_str);
+  image_2 = loadImage(image_str);
+  image_3 = loadImage(image_str);
+  image_4 = loadImage(image_str);
+  draw_histogram(image_1, image_1_x, image_1_y, image_width, image_height);
+  draw_histogram(image_2, image_2_x, image_2_y, image_width, image_height);
+  draw_histogram(image_3, image_3_x, image_3_y, image_width, image_height);
+  draw_histogram(image_4, image_4_x, image_4_y, image_width, image_height);
+  println("histogram!");
 }
 
-void draw_histogram(PImage image){
+void draw_histogram(PImage image, float image_x, float image_y, float image_width, float image_height){
   int[] hist = new int[256];
+  image.loadPixels();
 
-  // Calculate the histogram
   for (int i = 0; i < image.width; i++) {
     for (int j = 0; j < image.height; j++) {
       int bright = int(brightness(get(i, j)));
       hist[bright]++; 
     }
   }
-  
   int histMax = max(hist);
-  
-  for (int i = 0; i < image.width; i += 2) {
-    // Map i (from 0..img.width) to a location in the histogram (0..255)
-    int which = int(map(i, 0, image.width, 0, 255));
-    // Convert the histogram value to a location between 
-    // the bottom and the top of the picture
-    int y = int(map(hist[which], 0, histMax, image.height, 0));
-    line(i, image.height, i, y);
+  stroke(255);
+  for (int i = 0; i < 256; i++) {
+    float i_x = map(i, 0, 255, image_x, image_x + image_width);
+    float i_y = map(hist[i], 0, histMax, image_y + image_height, image_y);
+    line(i_x, image_y + image_height - 1, i_x, i_y - 1);
   }
+  stroke(0);
   image.updatePixels();
 }
 
 void show_frame_rate(){
-  print("show_frame_rate()");
+  showing_video = true;
+  showing_frame_rate = true;
+  println("show_frame_rate()");
 }
 
 void reset(){
-  print("reset!");
+  showing_video = false;
+  gray_scaling_video = false;
+  convolution_masks_video = false;
+  showing_frame_rate = false;
   image_1 = loadImage(image_str);
   image_2 = loadImage(image_str);
   image_3 = loadImage(image_str);
   image_4 = loadImage(image_str);
-  set_image_4();
+  println("reset!");
 }
 
 void draw() {
-  draw_buttoms();
+  set_buttom_listeners();
+  if (showing_video){
+    set_video_4();
+  }else{
+    set_image_4();
+  }
 }
 
 PImage makeConvolution(PImage img, float[][] kernel) {
@@ -240,7 +283,6 @@ PImage makeConvolution(PImage img, float[][] kernel) {
 void draw_buttoms(){
   draw_buttom_rectangles();
   draw_buttom_texts();
-  set_buttom_listeners();
 }
 
 void draw_buttom_rectangles(){
