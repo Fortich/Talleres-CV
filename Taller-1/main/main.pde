@@ -1,42 +1,66 @@
+import VLCJVideo.*;
+
 PGraphics py;
 PGraphics pg;
 PImage imagen_1, imagen_2, imagen_3, imagen_4;
+VLCJVideo video;
 
 boolean taller1 = false;
-float x = 1170;
-float y = 60;
-float w = 180;
-float h = 50;
-float y2 = 120;
-float y3 = 180;
-float y4 = 240;
-
 
 void setup(){
-  size(1444, 1178);
+  size(1024, 540);
+  //fullScreen();
+
+// 2. Dibujar el texto del boton color negro
+fill(0);
+
+//image(video,0,0);
   background(255);
   imagen_1 = loadImage("nazuko.png");
   imagen_2 = loadImage("nazuko.png");
   imagen_3 = loadImage("nazuko.png");
   imagen_4 = loadImage("nazuko.png");
+  video = new VLCJVideo(this);
+  
+}
+
+void open_video(){
+  video.openMedia("video.mp4");
+  video.loop();
+  video.play();
+}
+
+void gray_scale_image(){
+  print("gray_scale_image()");
+}
+
+void gray_scale_video(){
+  print("gray_scale_video()");
+}
+
+void convolution_mask_image(){
+  print("convolution_mask_image()");
+}
+
+void convolution_mask_video(){
+  print("convolution_mask_video()");
+}
+
+void histogram(){
+  print("histogram()");
+}
+
+void show_frame_rate(){
+  print("show_frame_rate()");
+}
+
+void reset(){
+  print("reset()");
 }
 
 void draw() {
-// 1. Dibujar el boton borde negro relleno gris
-fill(128);
-stroke(0);
-rect(x, y, w, h);
-rect(x, y2, w, h);
-rect(x, y3, w, h);
-rect(x, y4, w, h); 
-// 2. Dibujar el texto del boton color negro
-fill(0);
-text("Escala de Grises", x+40, y+h/2+4);
-text("Histograma", x+60, y2+h/2+4);
-text("Mascaras de convolucion", x+25, y3+h/2+4);
-text("Reiniciar", x+60, y4+h/2+4);
-
-if (mouseX > x && mouseX < x+w && mouseY > y4 && mouseY < y4+h && mousePressed==true){
+  draw_buttoms();
+if (mouseX > 0 && mouseX < 0 && mouseY > 0 && mouseY < 0 && mousePressed==true){
   imagen_1 = loadImage("nazuko.png");
   imagen_2 = loadImage("nazuko.png");
   imagen_3 = loadImage("nazuko.png");
@@ -45,10 +69,9 @@ if (mouseX > x && mouseX < x+w && mouseY > y4 && mouseY < y4+h && mousePressed==
   image(imagen_2, imagen_1.width, 0);
   image(imagen_3, 0, imagen_1.height);
   image(imagen_4, imagen_1.width, imagen_1.height);
-
 }
 // verificar si se dio click en el boton
-if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h && mousePressed==true){
+if (mouseX > 0 && mouseX < 0 && mouseY > 0 && mouseY < 0 && mousePressed==true){
 taller1=true; 
 imagen_2.loadPixels();
 imagen_3.loadPixels();
@@ -84,7 +107,7 @@ imagen_4.updatePixels();
 
 
 
-if (mouseX > x && mouseX < x+w && mouseY > y2 && mouseY < y2+h && mousePressed==true){
+if (mouseX > 0 && mouseX < 0 && mouseY > 0 && mouseY < 0 && mousePressed==true){
 int[] hist = new int[256];
 
 // Calculate the histogram
@@ -113,7 +136,7 @@ for (int i = 0; i < imagen_2.width; i += 2) {
   imagen_2.updatePixels();
 
 }
-if (mouseX > x && mouseX < x+w && mouseY > y3 && mouseY < y3+h && mousePressed==true){
+if (mouseX > 0 && mouseX < 0 && mouseY > 0 && mouseY < 0 && mousePressed==true){
 image(imagen_1, 0, 0);
 image(imagen_2, imagen_1.width, 0);
 image(imagen_3, 0, imagen_1.height);
@@ -127,10 +150,6 @@ kernel_emboss();
 
 
 }
-
-
-
-
 
 void kernel_edge_recognition() {
   imagen_2 = imagen_1.get();
@@ -192,5 +211,63 @@ void kernel_emboss() {
       imagen_4.updatePixels();
 
     }
+  }
+}
+
+void draw_buttoms(){
+  int padding_x = 10;
+  int padding_y = 10;
+  float relative_distance_x = 0.15;
+  float relative_distance_y = 0.1;
+  draw_buttom_rectangles(padding_x, padding_y, relative_distance_x, relative_distance_y);
+  draw_buttom_texts(padding_x, padding_y, relative_distance_x, relative_distance_y);
+  set_buttom_listeners(padding_x, padding_y, relative_distance_x, relative_distance_y);
+}
+
+void draw_buttom_rectangles(int padding_x, int padding_y, float relative_distance_x, float relative_distance_y){
+  fill(210);
+  rect(padding_x, height*relative_distance_y*0 + padding_y*1, width*relative_distance_x, height*relative_distance_y);
+  rect(padding_x, height*relative_distance_y*1 + padding_y*2, width*relative_distance_x, height*relative_distance_y);
+  rect(padding_x, height*relative_distance_y*2 + padding_y*3, width*relative_distance_x, height*relative_distance_y);
+  rect(padding_x, height*relative_distance_y*3 + padding_y*4, width*relative_distance_x, height*relative_distance_y);
+  rect(padding_x, height*relative_distance_y*4 + padding_y*5, width*relative_distance_x, height*relative_distance_y);
+  rect(padding_x, height*relative_distance_y*5 + padding_y*6, width*relative_distance_x, height*relative_distance_y);
+  rect(padding_x, height*relative_distance_y*6 + padding_y*7, width*relative_distance_x, height*relative_distance_y);
+}
+
+void draw_buttom_texts(int padding_x, int padding_y, float relative_distance_x, float relative_distance_y){
+  fill(0);
+  text("Escala de Grises imagen" , padding_x*2 + relative_distance_x*0, height*relative_distance_y*0 + padding_y*1 + padding_y*3.25);
+  text("Escala de Grises video"  , padding_x*2 + relative_distance_x*0, height*relative_distance_y*1 + padding_y*2 + padding_y*3.25);
+  text("Máscaras de convolución" , padding_x*2 + relative_distance_x*0, height*relative_distance_y*2 + padding_y*3 + padding_y*2.15);
+  text("imagen"                  , padding_x*2 + relative_distance_x*0, height*relative_distance_y*2 + padding_y*3 + padding_y*3.3);
+  text("Máscaras de convolución" , padding_x*2 + relative_distance_x*0, height*relative_distance_y*3 + padding_y*4 + padding_y*2.15);
+  text("video"                   , padding_x*2 + relative_distance_x*0, height*relative_distance_y*3 + padding_y*4 + padding_y*3.3);
+  text("Despliegue de Histograma", padding_x*2 + relative_distance_x*0, height*relative_distance_y*4 + padding_y*5 + padding_y*3.25);
+  text("Medición frame rate"     , padding_x*2 + relative_distance_x*0, height*relative_distance_y*5 + padding_y*6 + padding_y*3.25);
+  text("Reiniciar"               , padding_x*2 + relative_distance_x*0, height*relative_distance_y*6 + padding_y*7 + padding_y*3.25);
+}
+
+void set_buttom_listeners(int padding_x, int padding_y, float relative_distance_x, float relative_distance_y){
+  if (mouseX > padding_x && mouseX < padding_x + width*relative_distance_x && mouseY > height*relative_distance_y*0 + padding_y*1 && mouseY < height*relative_distance_y*1 + padding_y*1 && mousePressed==true){
+    gray_scale_image();
+  }
+  if (mouseX > padding_x && mouseX < padding_x + width*relative_distance_x && mouseY > height*relative_distance_y*1 + padding_y*2 && mouseY < height*relative_distance_y*2 + padding_y*2 && mousePressed==true){
+    gray_scale_video();
+  }
+  if (mouseX > padding_x && mouseX < padding_x + width*relative_distance_x && mouseY > height*relative_distance_y*2 + padding_y*3 && mouseY < height*relative_distance_y*3 + padding_y*3 && mousePressed==true){
+    convolution_mask_image();
+  }
+  if (mouseX > padding_x && mouseX < padding_x + width*relative_distance_x && mouseY > height*relative_distance_y*3 + padding_y*4 && mouseY < height*relative_distance_y*4 + padding_y*4 && mousePressed==true){
+    convolution_mask_video();
+  }
+  if (mouseX > padding_x && mouseX < padding_x + width*relative_distance_x && mouseY > height*relative_distance_y*4 + padding_y*5 && mouseY < height*relative_distance_y*5 + padding_y*5 && mousePressed==true){
+    histogram();
+  }
+  if (mouseX > padding_x && mouseX < padding_x + width*relative_distance_x && mouseY > height*relative_distance_y*5 + padding_y*6 && mouseY < height*relative_distance_y*6 + padding_y*6 && mousePressed==true){
+    show_frame_rate();
+  }
+  if (mouseX > padding_x && mouseX < padding_x + width*relative_distance_x && mouseY > height*relative_distance_y*6 + padding_y*7 && mouseY < height*relative_distance_y*7 + padding_y*7 && mousePressed==true){
+    reset();
   }
 }
