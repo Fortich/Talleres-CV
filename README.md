@@ -24,9 +24,8 @@ Completar la tabla:
 |          Integrante         |  github nick  |
 |-----------------------------|---------------|
 |  Edgar David Garay Forero   |   Edgarayf    |
-|-----------------------------|---------------|
 | Antonio Jose Suarez Fortich |   Ajsuarezf   |
-|---------------------------------------------|
+
 
 ## Discusión
 
