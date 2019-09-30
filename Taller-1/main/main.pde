@@ -58,7 +58,6 @@ void setup(){
   image_4 = loadImage(image_str);
   
   video_1 = new Movie(this, video_str);
-  video_1.loop();
   
   image_1_x = padding_x*3 + width*relative_distance_x*1.00;
   image_1_y = padding_y;
@@ -254,6 +253,7 @@ void reset(){
 void draw() {
   set_buttom_listeners();
   if (showing_video){
+    video_1.loop();
     set_video_4();
   }else{
     set_image_4();
