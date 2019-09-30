@@ -26,9 +26,12 @@ Emplear dos [canvas](https://processing.org/reference/PGraphics.html), uno para 
 
 
 ## Discusión
-
+* El repositorio cuenta con dos archivos uno llamado main y segmentacion todos los puntos se encuentran en el main exeptuando el de segmentacion de la imagen que se deja en una carpeta aparte dentro del repositorio
+* El programa cuenta con uan serie de botones que indican la accion a mostrar 
 * Se crea el canvas con el tamaño para 4 imagenes la imgen o video 1 es la imgen original y de la 2 a la 4 muestran los resultados obtenidos 
 * Se implementa la conversion a la escala de grises tanto en la imagen como en el video usando threshold, promedio rgb y promedio luma y se modifican las imgenes 2 3 y 4 para mostrar los resultados
 * Se realizan las mascaras de convolucion haciendo uso de los kernel de identidad, sharpen, edge detection y gaussian blur
 * Se muestra el framerate
+* Se agregan el procesamiento del video por medio de los kernel ya mencionados como adicional para ver de que manera afectan los frame rates
+
 
