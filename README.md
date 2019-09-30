@@ -19,12 +19,10 @@ Emplear dos [canvas](https://processing.org/reference/PGraphics.html), uno para 
 
 ### Integrantes
 
-Completar la tabla:
-
 |          Integrante         |  github nick  |
 |-----------------------------|---------------|
 |  Edgar David Garay Forero   |   Edgarayf    |
-| Antonio Jose Suarez Fortich |   Ajsuarezf   |
+| Antonio Jose Suarez Fortich |   Fortich     |
 
 
 ## Discusión
