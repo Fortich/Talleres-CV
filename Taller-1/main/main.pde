@@ -14,6 +14,7 @@ boolean showing_video;
 boolean gray_scaling_video;
 boolean convolution_masks_video;
 boolean showing_frame_rate;
+boolean draw_histogram;
 
 Movie video_1;
 
@@ -159,6 +160,7 @@ void gray_scale_video(){
   gray_scaling_video = true;
   convolution_masks_video = false;
   showing_frame_rate = false;
+  draw_histogram = false;
   println("Gray scaling videos!");
 }
 
@@ -167,6 +169,7 @@ void convolution_mask_image(){
   gray_scaling_video = false;
   convolution_masks_video = false;
   showing_frame_rate = false;
+  draw_histogram = false;
   println("convolution_mask_image!");
   
   set_image_4();
@@ -187,6 +190,7 @@ void convolution_mask_video(){
   gray_scaling_video = false;
   convolution_masks_video = true;
   showing_frame_rate = false;
+  draw_histogram = false;
   println("convolution_mask_video()");
 }
 
@@ -195,6 +199,7 @@ void histogram(){
   gray_scaling_video = false;
   convolution_masks_video = false;
   showing_frame_rate = false;
+  draw_histogram = true;
   image_1 = loadImage(image_str);
   image_2 = loadImage(image_str);
   image_3 = loadImage(image_str);
@@ -238,6 +243,7 @@ void reset(){
   gray_scaling_video = false;
   convolution_masks_video = false;
   showing_frame_rate = false;
+  draw_histogram = false;
   image_1 = loadImage(image_str);
   image_2 = loadImage(image_str);
   image_3 = loadImage(image_str);
@@ -251,6 +257,13 @@ void draw() {
     set_video_4();
   }else{
     set_image_4();
+  }
+  
+  if (draw_histogram) {
+    draw_histogram(image_1, image_1_x, image_1_y, image_width, image_height);
+    draw_histogram(image_2, image_2_x, image_2_y, image_width, image_height);
+    draw_histogram(image_3, image_3_x, image_3_y, image_width, image_height);
+    draw_histogram(image_4, image_4_x, image_4_y, image_width, image_height);
   }
 }
 
