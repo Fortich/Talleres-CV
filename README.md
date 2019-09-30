@@ -29,7 +29,8 @@ Completar la tabla:
 
 ## Discusión
 
-* Se crea el canvas con el tamaño para 4 imagenes la imgen 1 es la imgen original y de la 2 a la 4 muestran los resultados obtenidos 
-* Se implementa la conversion a la escala de grises usando threshold, promedio rgb y por medio del brillo de los pixeles y se modifican las imgenes 1 2 3 para mostrar los resultados
-* Se realizan las mascaras de convolucion haciendo uso de los kernel de identidad, sharpen y edge detection  
+* Se crea el canvas con el tamaño para 4 imagenes la imgen o video 1 es la imgen original y de la 2 a la 4 muestran los resultados obtenidos 
+* Se implementa la conversion a la escala de grises tanto en la imagen como en el video usando threshold, promedio rgb y promedio luma y se modifican las imgenes 2 3 y 4 para mostrar los resultados
+* Se realizan las mascaras de convolucion haciendo uso de los kernel de identidad, sharpen, edge detection y gaussian blur
+* Se muestra el framerate
 
