@@ -15,8 +15,6 @@ Implementar las siguientes operaciones de análisis para imágenes/video:
 * (solo para imágenes) Segmentación de la imagen a partir del histograma.
 * (solo para video) Medición de la [eficiencia computacional](https://processing.org/reference/frameRate.html) para las operaciones realizadas.
 
-Emplear dos [canvas](https://processing.org/reference/PGraphics.html), uno para desplegar la imagen/video original y el otro para el resultado del análisis.
-
 ### Integrantes
 
 |          Integrante         |  github nick  |
