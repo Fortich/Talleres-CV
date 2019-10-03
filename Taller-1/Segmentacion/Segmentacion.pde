@@ -55,12 +55,11 @@ void draw() {
 
 void mouseMoved() {  
   for (int i = 0; i < image_1.pixels.length; i++) {
-    if (!(brightness(image_1.pixels[i]) <= mouseX*brightnessC+8 && brightness(image_1.pixels[i]) >= mouseX*brightnessC-8)) {
+    if (!(brightness(image_1.pixels[i]) <= mouseX*brightnessC+10 && brightness(image_1.pixels[i]) >= mouseX*brightnessC-10)) {
       image_2.pixels[i] = color(0);
     }else{
       image_2.pixels[i] = image_1.pixels[i];
     }
-
   }
   print(mouseX*brightnessC+8);
   print("\n");
