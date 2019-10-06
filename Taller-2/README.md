@@ -1,0 +1,35 @@
+# Taller ilusiones visuales
+
+## Propósito
+
+Comprender algunos aspectos fundamentales de la [inferencia inconsciente](https://github.com/VisualComputing/Cognitive) de la percepción visual humana.
+
+## Tareas
+
+Implementar al menos 6 ilusiones de tres tipos distintos (paradójicas, geométricas, ambiguas, etc.), al menos dos con movimiento y dos con interactividad.
+
+*Recomendación:* implementar el código desde ceros.
+
+## Integrantes
+
+Complete la tabla:
+
+| Integrante                 | github nick |
+|----------------------------|-------------|
+|Edgar David Garay Forero    | Edgarayf    |
+|Antonio Jose Suarez Fortich | Fortich     |
+
+## Discusión
+
+1. Complete la tabla
+
+| Ilusión                      | Categoria | Referencia            | Tipo de interactividad (si aplica)                           | URL código base (si aplica) |
+|------------------------------|-----------|-----------------------|--------------------------------------------------------------|-----------------------------|
+|Rotación cambia interpretación|Ambigua    |https://bit.ly/33anI1I |Puedes cambiar la posición de la figura que rota con el mouse.|                             |
+|El cigarrillo que crece       |Geométrica |https://bit.ly/1VRkFlo |La posición del mouse indica la posición del cigarrillo.      |                             |
+|Gathering for gardner dragon  |Ambigua    |https://bit.ly/2VehOd2 |La posicipon del mouse indica la posición de la cámara.       |                             |
+|                              |           |                       |                                                              |                             |
+|                              |           |                       |                                                              |                             |
+|                              |           |                       |                                                              |                             |
+
+2. Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar
