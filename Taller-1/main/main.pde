@@ -224,7 +224,7 @@ void draw_histogram(PImage image, float image_x, float image_y, float image_widt
   stroke(255);
   for (int i = 0; i < 256; i++) {
     float i_x = map(i, 0, 255, image_x, image_x + image_width);
-    float i_y = map(hist[i], 0, histMax, image_y + image_height, image_y);
+    float i_y = map(hist[i], 0, histMax, image_y, image_y + image_height);
     line(i_x, image_y + image_height - 1, i_x, i_y - 1);
   }
   stroke(0);

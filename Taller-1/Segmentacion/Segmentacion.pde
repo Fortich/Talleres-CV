@@ -1,28 +1,31 @@
 PGraphics py;
 PGraphics pg;
 PImage image_1, image_2;
-float brightnessC;
+float brightnessM;
 
-
+//Función para dibujar el rectangulo de explicacion del ejercicio 
 void draw_rectangles(){
   fill(210);
   rect(10, image_1.height + 10, (image_1.width + 10) * 2, 100); 
 }
+// texto a mostrar
 void draw_text(){
   fill(0);
   text("Segmentacion de la imagen el brillo se controla al mover el mouse de manra horizontal sobre la imagen a la derecha indica mas brillo y a la izquierda una reduccion del brillo en la imagen de la derecha se ve la imagen segmentada dependiendo del brillo elegido" , 35, image_1.height + 20, (image_1.width + 10) * 2, 100);
 }
+// carga de imagenes y variables por medio de la funcion setup
 void setup() {
   size(1000, 500);
   image_1 = loadImage("image1.png");
   image_2 = loadImage("image1.png");
   image_1.resize(410, 350);
   image_2.resize(410, 350);
-  brightnessC = 255.0/image_1.width;
+  brightnessM = 255.0/image_1.width;
   draw_rectangles();
   draw_text();
 }
 
+// se inicia todo el proceso en la funcion draw empezando por el histograma 
 void draw() {
   image(image_1, 10, 0);
   image(image_2, image_1.width+20, 0);
@@ -53,14 +56,16 @@ void draw() {
   image_2.updatePixels();
 }
 
+
+//funcion de procesing que se activa cada vez que se mueve el mouse busca el brillo de indicado por el mouse y marca los pixeles con un brillo similiar en un rango dado (20)  
 void mouseMoved() {  
   for (int i = 0; i < image_1.pixels.length; i++) {
-    if (!(brightness(image_1.pixels[i]) <= mouseX*brightnessC+10 && brightness(image_1.pixels[i]) >= mouseX*brightnessC-10)) {
+    if (!(brightness(image_1.pixels[i]) <= mouseX*brightnessM+10 && brightness(image_1.pixels[i]) >= mouseX*brightnessM-10)) {
       image_2.pixels[i] = color(0);
     }else{
       image_2.pixels[i] = image_1.pixels[i];
     }
   }
-  print(mouseX*brightnessC+8);
+  print(mouseX*brightnessM);
   print("\n");
 }
