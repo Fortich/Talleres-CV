@@ -28,8 +28,8 @@ Complete la tabla:
 |Rotación cambia interpretación|Ambigua    |https://bit.ly/33anI1I |Puedes cambiar la velocidad y dirección en la que rota la imagen con la posición del mouse|                             |
 |El cigarrillo que crece       |Geométrica |https://bit.ly/1VRkFlo |La posición del mouse indica la posición del cigarrillo.      |                             |
 |Gathering for gardner dragon  |Ambigua    |https://bit.ly/2VehOd2 |La posicipon del mouse indica la posición de la cámara.       |                             |
-|    Hering Illusion    |           |Visual                      | El click retira las esferas del fondo                                                 |                             |
-|                              |           |                       |                                                              |                             |
+|    Hering Illusion    |   Visual  | https://michaelbach.de/ot/ang-hering/index.html            | El click retira las esferas del fondo                                                 |                             |
+|      Waves          |Movimiento        |                       |      N/A                                                        |                             |
 |                              |           |                       |                                                              |                             |
 
 2. Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar
