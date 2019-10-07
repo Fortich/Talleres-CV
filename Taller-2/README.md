@@ -30,6 +30,6 @@ Complete la tabla:
 |Gathering for gardner dragon  |Ambigua    |https://bit.ly/2VehOd2 |La posicipon del mouse indica la posición de la cámara.       |                             |
 |    Hering Illusion    |   Visual  | https://michaelbach.de/ot/ang-hering/index.html            | El click retira las esferas del fondo                                                 |                             |
 |      Waves          |Movimiento        |                       |      N/A                                                        |                             |
-|                              |           |                       |                                                              |                             |
+|     Squares          | percepción        |                       |     click para retirar los cuadrados que crean la ilusion                                                         |                             |
 
 2. Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar
