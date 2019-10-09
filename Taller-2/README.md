@@ -27,7 +27,7 @@ Complete la tabla:
 |-------|---------|----------|----------------------|---------------|
 |Rotación cambia interpretación|Ambigua|https://bit.ly/33anI1I|Puedes cambiar la velocidad y dirección en la que rota la imagen con la posición del mouse.| |
 |El cigarrillo que crece|Geométrica|https://bit.ly/1VRkFlo|La posición del mouse indica la posición del cigarrillo.| |
-|Cornsweet Illusion|Ambigua|https://bit.ly/2OzKOL4| |Click para retirar el rectángulo del centro.|
+|Cornsweet Illusion|Ambigua|https://bit.ly/2OzKOL4|Click para retirar el rectángulo del centro.| |
 |Hering Illusion|Visual|https://bit.ly/2M351qE|El click retira las esferas del fondo| |
 |Waves|Movimiento|https://bit.ly/33lUT23| | |
 |Squares|Percepción| |Click para retirar los cuadrados que crean la ilusion.| |
