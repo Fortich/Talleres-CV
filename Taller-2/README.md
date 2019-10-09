@@ -23,13 +23,13 @@ Complete la tabla:
 
 1. Complete la tabla
 
-| Ilusión                      | Categoria | Referencia            | Tipo de interactividad (si aplica)                           | URL código base (si aplica) |
-|------------------------------|-----------|-----------------------|--------------------------------------------------------------|-----------------------------|
-|Rotación cambia interpretación|Ambigua    |https://bit.ly/33anI1I |Puedes cambiar la velocidad y dirección en la que rota la imagen con la posición del mouse|                             |
-|El cigarrillo que crece       |Geométrica |https://bit.ly/1VRkFlo |La posición del mouse indica la posición del cigarrillo.      |                             |
-|Gathering for gardner dragon  |Ambigua    |https://bit.ly/2VehOd2 |La posicipon del mouse indica la posición de la cámara.       |                             |
-|    Hering Illusion    |   Visual  | https://michaelbach.de/ot/ang-hering/index.html            | El click retira las esferas del fondo                                                 |                             |
-|      Waves          |Movimiento        |                       |      N/A                                                        |                             |
-|     Squares          | percepción        |                       |     click para retirar los cuadrados que crean la ilusion                                                         |                             |
+|Ilusión|Categoria|Referencia|Tipo de interactividad|URL código base|
+|-------|---------|----------|----------------------|---------------|
+|Rotación cambia interpretación|Ambigua|https://bit.ly/33anI1I|Puedes cambiar la velocidad y dirección en la que rota la imagen con la posición del mouse| |
+|El cigarrillo que crece|Geométrica|https://bit.ly/1VRkFlo|La posición del mouse indica la posición del cigarrillo.| |
+|Cornsweet Illusion|Ambigua|https://bit.ly/2OzKOL4| | |
+|Hering Illusion|Visual|https://bit.ly/2M351qE|El click retira las esferas del fondo| |
+|Waves|Movimiento|https://bit.ly/33lUT23| | |
+|Squares|Percepción| |Click para retirar los cuadrados que crean la ilusion | |
 
 2. Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar

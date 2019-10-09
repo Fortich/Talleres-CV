@@ -1,5 +1,3 @@
-PShape cigarrete;
-
 color white = 255;
 color black = 0;
 float pos_cig_mobile;
@@ -10,7 +8,6 @@ boolean stop_drawing_background;
 void setup(){
   pos_cig_mobile = width/4-5;
   rotation = 0;
-  cigarrete = loadShape("cigarette.svg");
   size(1024,500,P3D);
   stop_drawing_background = false;
 }
