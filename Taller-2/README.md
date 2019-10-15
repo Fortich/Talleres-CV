@@ -30,6 +30,7 @@ Complete la tabla:
 |Cornsweet Illusion|Ambigua|https://bit.ly/2OzKOL4|Click para retirar el rectángulo del centro.| |
 |Hering Illusion|Visual|https://bit.ly/2M351qE|El click retira las esferas del fondo| |
 |Waves|Movimiento|https://bit.ly/33lUT23| | |
+|dinosaur|Movimiento|https://www.youtube.com/watch?v=A4QcyW-qTUg| | |
 |Squares|Percepción| |Click para retirar los cuadrados que crean la ilusion.| |
 
 2. Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar
